@@ -10,16 +10,19 @@ import {FriendsModule} from "../friends/friends.module";
 
 
 @NgModule({
-  declarations: [
-    PostListComponent,
-    PostDetailsComponent,
-    CommentComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    ProfileModule,
-    FriendsModule
-  ]
+    declarations: [
+        PostListComponent,
+        PostDetailsComponent,
+        CommentComponent
+    ],
+    exports: [
+        PostListComponent
+    ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        ProfileModule,
+        FriendsModule
+    ]
 })
 export class PostModule { }

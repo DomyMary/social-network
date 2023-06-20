@@ -7,11 +7,19 @@ import { AppComponent } from './app.component';
 import {AuthModule} from "./auth/auth.module";
 import {PostModule} from "./post/post.module";
 import {CommonModule} from "@angular/common";
+import { HomeComponent } from './home/home.component';
+import {ProfileModule} from "./profile/profile.module";
+import {FriendsModule} from "./friends/friends.module";
+import { NavbarComponent } from './navbar/navbar.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +27,9 @@ import {CommonModule} from "@angular/common";
     AppRoutingModule,
     AuthModule,
     PostModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProfileModule,
+    FriendsModule
 
   ],
   providers: [],
