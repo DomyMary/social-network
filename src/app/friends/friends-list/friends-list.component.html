@@ -1,1 +1,26 @@
-<p>friends-list works!</p>
+
+<nav class="navbar bg-body-tertiary mt-3">
+  <div class="container-fluid">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search friends" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search </button>
+    </form>
+    <div class="overflow-auto w-100 mt-3">
+      <ul class="list-group mt-3 border-secondary list-group-item-success">
+      <ng-container *ngFor="let friend of friends" >
+          <li class="list-group-item">
+          <h5 class="mb-1">Cognome nome</h5>
+            <small>Information</small>
+            <div class=" w-25 h-25" style="margin-left: 250px">
+              <button class="btn btn-outline-success">
+                <i class="bi bi-person-add"></i>
+              </button>
+
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+
+      </div>
+    </div>
+</nav>

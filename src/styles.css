@@ -1,6 +1,19 @@
-@import "bootstrap/dist/css/bootstrap.css";
+:root{
+  --background: #140000;
+  --primary-3: #810E1B;
+  --primary-2: #CB152B;
+  --primary-1: #E82139;
+}
 html,
 body {
   height: 100%;
+  color: var(--bs-secondary);
+
 }
+
+.form-check-input:checked {
+  background-color: #810E1B;
+  border-color:  #810E1B;
+}
+
 /* You can add global styles to this file, and also import other style files */

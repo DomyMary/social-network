@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent {
+  comments=[1,2,3];
 
 }

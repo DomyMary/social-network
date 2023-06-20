@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent {
+  arrayCard=[1,2,3,4]
+
 
 }

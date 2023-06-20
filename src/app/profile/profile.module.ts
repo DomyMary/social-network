@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FriendsListComponent } from './friends-list/friends-list.component';
+import { UtenteComponent } from './utente/utente.component';
 
 
 
 @NgModule({
     declarations: [
-        FriendsListComponent
+        UtenteComponent
     ],
     exports: [
-        FriendsListComponent
+        UtenteComponent
     ],
     imports: [
         CommonModule
     ]
 })
-export class FriendsModule { }
+export class ProfileModule { }
