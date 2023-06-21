@@ -12,8 +12,7 @@ import {RouterLink, RouterOutlet} from "@angular/router";
         RegisterComponent
     ],
   exports: [
-    LoginComponent,
-    RegisterComponent
+
   ],
     imports: [
         CommonModule,

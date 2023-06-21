@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AuthModule} from "./auth/auth.module";
-import {PostModule} from "./post/post.module";
 import {CommonModule} from "@angular/common";
+import {HomeModule} from "./home/home.module";
 
 
 @NgModule({
@@ -18,7 +18,6 @@ import {CommonModule} from "@angular/common";
     CommonModule,
     AppRoutingModule,
     AuthModule,
-    PostModule,
     BrowserAnimationsModule
 
   ],

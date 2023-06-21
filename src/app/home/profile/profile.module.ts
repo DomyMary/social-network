@@ -4,6 +4,7 @@ import { UtenteComponent } from './utente/utente.component';
 
 
 
+
 @NgModule({
     declarations: [
         UtenteComponent
@@ -12,7 +13,7 @@ import { UtenteComponent } from './utente/utente.component';
         UtenteComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
     ]
 })
 export class ProfileModule { }
