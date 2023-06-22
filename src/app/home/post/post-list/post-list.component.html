@@ -28,15 +28,32 @@
                   <i class="bi bi-hand-thumbs-up "></i>
                   </button>
               </li>
+              <p>
+                <a class="btn btn-outline-primary mx-2" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                  <i class="bi bi-plus-circle mx-2" ></i>
+                  Create a new comment
+                </a>
+                <a class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                  All comments</a>
+              </p>
 
-                <p>
-                  <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    All comments
-                  </a>
-                </p>
-                <div class="collapse overflow-auto w-100 h-100 mt-3" id="collapseExample">
-                  <app-comment></app-comment>
-                </div>
+
+              <div class="grid text-center w-100" style="row-gap: 0;">
+                <div class="g-col-6 ms-1 ">
+                  <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body mb-4">
+                      <app-create-new-comment></app-create-new-comment>
+                    </div>
+                  </div>
+                  </div>
+                <div class="g-col-6">
+                  <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                      <app-comment></app-comment>
+                    </div>
+                  </div>
+                  </div>
+              </div>
 
 
             </ul>
