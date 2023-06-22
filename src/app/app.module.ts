@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AuthModule} from "./auth/auth.module";
 import {CommonModule} from "@angular/common";
+import { HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -17,8 +18,8 @@ import {CommonModule} from "@angular/common";
     CommonModule,
     AppRoutingModule,
     AuthModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,11 +23,11 @@
         <p><a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="#">Password o username dimenticata?</a></p>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 120px">
+        <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 120px">
           Sign up
         </button>
         <app-register></app-register>
-        <button class="btn btn-danger w-80 " style="margin-left: 15px" type="button" routerLink="/home">Sign in</button>
+        <button class="btn btn-danger w-80 " (click)="login()" style="margin-left: 15px" type="submit">Sign in</button>
 
       </form>
     </main>
