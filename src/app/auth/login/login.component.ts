@@ -13,7 +13,7 @@ export class LoginComponent {
   }
 
   login() {
-    const body = {username: 'Domenica', password: 'ciao'};
+    const body = {username: 'emanuele', password: 'emanuele'};
       this.requestService.post('login', body).subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
       console.log(res);
