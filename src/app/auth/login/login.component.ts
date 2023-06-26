@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../shared/services/request.service";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,17 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  loginform: FormGroup=new FormGroup({
+    username: new FormControl(null, Validators.required),
+    password: new FormControl(null, Validators.required),
+  });
 
   constructor(private requestService: RequestService, private router: Router) {
   }
 
+
   login() {
-    const body = {username: 'emanuele', password: 'emanuele'};
+    const body = {username: this.loginform.value.username, password: this.loginform.value.password};
       this.requestService.post('login', body).subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
       console.log(res);
