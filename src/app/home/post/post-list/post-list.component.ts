@@ -29,6 +29,15 @@ getPosts(){
 
   });
 
+
+  const newPost = {text: 'Ciao da Emauele'}
+  this.requestService.post('posts', newPost).subscribe((res: any) => {
+    console.log(res);
+  }, (err) => {
+    // LA richuiesta è andata in errore
+  }, () => {
+    // La richiesta è stata completata con successo
+  });
 }
 
 

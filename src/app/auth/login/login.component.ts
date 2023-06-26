@@ -23,6 +23,9 @@ export class LoginComponent {
       this.requestService.post('login', body).subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
       console.log(res);
+      // TODO: Creare SessionService per la gestione del LocalStorage (salvataggio e recupero)
+      // Setto all'interno del localStorage il token che abbiamo ricevuto
+      localStorage.setItem('token', res.access_token);
     }, (error) => {
       console.error(error);
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
