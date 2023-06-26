@@ -5,6 +5,8 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { CommentComponent } from './comment/comment.component';
 import { CreateNewPostComponent } from './create-new-post/create-new-post.component';
 import { CreateNewCommentComponent } from './create-new-comment/create-new-comment.component';
+import { NavPostComponent } from './nav-post/nav-post.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -14,17 +16,20 @@ import { CreateNewCommentComponent } from './create-new-comment/create-new-comme
     PostDetailsComponent,
     CommentComponent,
     CreateNewPostComponent,
-    CreateNewCommentComponent
+    CreateNewCommentComponent,
+    NavPostComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     PostListComponent,
     PostDetailsComponent,
     CommentComponent,
     CreateNewPostComponent,
-    CreateNewCommentComponent
+    CreateNewCommentComponent,
+    NavPostComponent
   ]
 })
 export class PostModule { }
