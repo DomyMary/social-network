@@ -21,9 +21,10 @@ export class CreateNewPostComponent {
     this.requestService.post('posts', newPost).subscribe((res: any) => {
       console.log(res);
     }, (err) => {
-      // LA richiesta è andata in errore
+      // La richiesta è andata in errore
     }, () => {
       // La richiesta è stata completata con successo
+      alert("Il post è stato creato con successo")
     });
   }
 

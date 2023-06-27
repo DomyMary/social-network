@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../../shared/services/request.service";
 import {Router} from "@angular/router";
+import {Post} from "../../../shared/types/post";
 
 @Component({
   selector: 'app-post-list',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit{
-  arrayCard=[1,2,3,4]
+  posts= new Array<Post>()
 
   constructor( private requestService : RequestService) {
   }
@@ -18,9 +19,10 @@ this.getPosts();
 }
 
 getPosts(){
-  this.requestService.get("posts").subscribe((res: any) => {
+  return this.requestService.get("posts").subscribe((res: any) => {
     // 1 Leggo la risposta ricevuta dal server
     console.log(res);
+    this.posts=res;
   }, (error) => {
     console.error(error);
     // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
