@@ -28,6 +28,7 @@ export class LoginComponent {
       localStorage.setItem('token', res.access_token);
     }, (error) => {
       console.error(error);
+      alert("username o password sbagliata")
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
     }, () => {
       // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login

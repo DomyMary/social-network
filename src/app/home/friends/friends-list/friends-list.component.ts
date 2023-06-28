@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {RequestService} from "../../../shared/services/request.service";
 
 @Component({
   selector: 'app-friends-list',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class FriendsListComponent {
   friends=[1,2,3,4,5,6,7]
+
+  constructor() {
+  }
+
+
 }

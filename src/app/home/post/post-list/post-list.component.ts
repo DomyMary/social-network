@@ -22,18 +22,16 @@ getPosts(){
   return this.requestService.get("posts").subscribe((res: any) => {
     // 1 Leggo la risposta ricevuta dal server
     console.log(res);
+    console.log(this.posts)
     this.posts=res;
   }, (error) => {
     console.error(error);
     // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
   }, () => {
     // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login
-
   });
-
-
-
 }
+
 
 
 }

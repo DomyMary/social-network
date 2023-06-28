@@ -13,4 +13,6 @@ export class Post {
     this.likes = likes;
     this.comments = comments;
   }
+
+
 }
