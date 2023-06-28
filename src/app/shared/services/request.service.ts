@@ -16,4 +16,8 @@ export class RequestService {
   post(url: string, data: any) {
     return this.http.post(this.host + url, data);
   }
+
+  delete(url: string) {
+    return this.http.delete(this.host + url);
+  }
 }

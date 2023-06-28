@@ -24,8 +24,9 @@
             <p class="text-center bg-primary-subtle text-dark rounded-pill border border-primary"> {{post.text}} </p>
             <ul class="nav nav-pills  mb-4">
               <li class="nav-item">
-                <button  type="button" class="btn btn btn-outline-primary mx-2">
+                <button  type="button" id="buttonLike" class="btn btn btn-outline-primary mx-2" (click)="clickLike(post.id, post.user_id,post.likes)" >
                   <i class="bi bi-hand-thumbs-up "> </i>
+
                   </button>
               </li>
               <p>
