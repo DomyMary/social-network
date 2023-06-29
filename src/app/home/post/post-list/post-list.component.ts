@@ -2,6 +2,7 @@ import {Component, OnInit, Output} from '@angular/core';
 import {RequestService} from "../../../shared/services/request.service";
 import {Router} from "@angular/router";
 import {Post} from "../../../shared/types/post";
+import {Like} from "../../../shared/types/like";
 
 
 @Component({
@@ -11,7 +12,7 @@ import {Post} from "../../../shared/types/post";
 })
 export class PostListComponent implements OnInit{
  button= document.getElementById("buttonLike");
-  posts= new Array<Post>()
+  posts= new Array<Post>();
 
   constructor( private requestService : RequestService) {
   }
@@ -38,7 +39,8 @@ getPosts(){
 
 
 addLike(postId:number){
-    this.requestService.post("add-like/"+ postId, postId).subscribe((res:any)=>{
+  const body= {post_id:postId}
+    this.requestService.post("add-like/"+ postId, body).subscribe((res:any)=>{
       console.log(res);
     }, (err) => {
       console.log(err)
@@ -60,18 +62,24 @@ removelike(postId: number, idLike:number){
 
 }
 
-  clickLike(postId:number, userId:number, arrayLike:Array<any>){
-    for(let i=0;i<arrayLike.length;i++){
-      if(arrayLike[i].user_id!=userId && arrayLike[i].post_id!=postId){
-        this.addLike(postId);
-        this.button!.classList.add(" active");
-      } else{
-        this.removelike(postId, arrayLike[i].id);
-        this.button!.classList.remove("active");
-      }
-    }
 
-  }
+  // clickLike(postId:number, arrayLike:Array<any>){
+  //   for(let i=0;i<arrayLike.length;i++){
+  //     console.log(arrayLike[i]);
+  //     if(arrayLike[i].postId!=postId){
+  //       this.addLike(postId)
+  //       // this.button!.classList.add(" active")
+  //       break
+  //     } else{
+  //       this.removelike(postId, arrayLike[i].id)
+  //       break
+  //       // this.button!.classList.remove("active")
+  //     }
+  //   }
+
+  // }
+
+
 
 
 }
