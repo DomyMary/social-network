@@ -6,56 +6,59 @@ import {Like} from "../../../shared/types/like";
 
 
 @Component({
-  selector: 'app-post-list',
-  templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+selector: 'app-post-list',
+templateUrl: './post-list.component.html',
+styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit{
- button= document.getElementById("buttonLike");
-  posts= new Array<Post>();
+export class PostListComponent implements OnInit {
+button = document.getElementById("buttonLike");
+posts = new Array<Post>();
+loading:boolean=true;
 
-  constructor( private requestService : RequestService) {
-  }
+constructor(private requestService: RequestService) {
+}
 
 ngOnInit() {
-this.getPosts();
+  this.getPosts();
 }
 
 
-getPosts(){
+getPosts() {
+  this.loading=true;
   return this.requestService.get("posts").subscribe((res: any) => {
     // 1 Leggo la risposta ricevuta dal server
     console.log(res);
     console.log(this.posts)
-    this.posts=res;
+    this.posts = res;
   }, (error) => {
     console.error(error);
+    this.loading=error
     // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
   }, () => {
-    // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login
+    // 3 La chiamata è stata completata con successo (SENZA ERRORI)
+    this.loading=false;
   });
 }
 
 
-
-addLike(postId:number){
-  const body= {post_id:postId}
-    this.requestService.post("add-like/"+ postId, body).subscribe((res:any)=>{
-      console.log(res);
-    }, (err) => {
-      console.log(err)
-    }, ()=>{
-           alert("il like è fatto");
-
-    })
-}
-
-removelike(postId: number, idLike:number){
-    this.requestService.delete("remove-like/"+ idLike +"/" + postId).subscribe((res:any)=>{
+addLike(postId: number) {
+  const body = {post_id: postId}
+  this.requestService.post("add-like/" + postId, body).subscribe((res: any) => {
     console.log(res);
   }, (err) => {
     console.log(err)
-  }, ()=>{
+  }, () => {
+    alert("il like è fatto");
+
+  })
+}
+
+removelike(postId: number, idLike: number) {
+  this.requestService.delete("remove-like/" + idLike + "/" + postId).subscribe((res: any) => {
+    console.log(res);
+  }, (err) => {
+    console.log(err)
+  }, () => {
     alert("il like è rimosso");
 
   })
@@ -63,23 +66,21 @@ removelike(postId: number, idLike:number){
 }
 
 
-  // clickLike(postId:number, arrayLike:Array<any>){
-  //   for(let i=0;i<arrayLike.length;i++){
-  //     console.log(arrayLike[i]);
-  //     if(arrayLike[i].postId!=postId){
-  //       this.addLike(postId)
-  //       // this.button!.classList.add(" active")
-  //       break
-  //     } else{
-  //       this.removelike(postId, arrayLike[i].id)
-  //       break
-  //       // this.button!.classList.remove("active")
-  //     }
-  //   }
+// clickLike(postId:number, arrayLike:Array<any>){
+//   for(let i=0;i<arrayLike.length;i++){
+//     console.log(arrayLike[i]);
+//     if(arrayLike[i].postId!=postId){
+//       this.addLike(postId)
+//       // this.button!.classList.add(" active")
+//       break
+//     } else{
+//       this.removelike(postId, arrayLike[i].id)
+//       break
+//       // this.button!.classList.remove("active")
+//     }
+//   }
 
-  // }
-
-
+// }
 
 
 }
