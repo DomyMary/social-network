@@ -26,7 +26,7 @@ export class LoginComponent {
       // TODO: Creare SessionService per la gestione del LocalStorage (salvataggio e recupero)
       // Setto all'interno del localStorage il token che abbiamo ricevuto
       localStorage.setItem('token', res.access_token);
-      localStorage.setItem('username', this.loginform.value.username)
+      localStorage.setItem('username', this.loginform.value.username);
     }, (error) => {
       console.error(error);
       alert("username o password sbagliata")

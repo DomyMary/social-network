@@ -1,11 +1,11 @@
 export class Like{
-  postId: number;
-  userId:number;
+  post_id: number;
+  user_id:number;
   id: number;
 
-  constructor(postId: number, userId: number, id: number) {
-    this.postId = postId;
-    this.userId = userId;
+  constructor(post_id: number, user_id: number, id: number) {
+    this.post_id = post_id;
+    this.user_id = user_id;
     this.id = id;
   }
 }
