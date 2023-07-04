@@ -11,7 +11,7 @@ import {Post} from "../../../shared/types/post";
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  button = document.getElementById("buttonLike");
+
   posts = new Array<Post>();
   loading: boolean = true;
 
@@ -48,8 +48,7 @@ export class PostListComponent implements OnInit {
     }, (err) => {
       console.log(err)
     }, () => {
-      alert("il like è fatto");
-
+      this.getPosts();
     })
   }
 
@@ -59,8 +58,7 @@ export class PostListComponent implements OnInit {
     }, (err) => {
       console.log(err)
     }, () => {
-      alert("il like è rimosso");
-
+      this.getPosts();
     })
 
   }
@@ -72,13 +70,12 @@ export class PostListComponent implements OnInit {
       this.getPosts();
     } else {
       for (let i = 0; i < arrayLike.length; i++) {
-        if (arrayLike[i].user_id + '' !== localStorage.getItem(`id`)) {
+        if (arrayLike[i].user_id + '' !== localStorage.getItem(`id`) ) {
           this.addLike(postId)
-          this.getPosts();
+
           break
         } else {
           this.removelike(postId, arrayLike[i].id)
-          this.getPosts();
           break
         }
       }
