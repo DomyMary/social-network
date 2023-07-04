@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {RequestService} from "../../../shared/services/request.service";
-
 import {Post} from "../../../shared/types/post";
+
 
 
 
@@ -15,11 +15,14 @@ export class PostListComponent implements OnInit {
   posts = new Array<Post>();
   loading: boolean = true;
 
+
+
   constructor(private requestService: RequestService) {
   }
 
   ngOnInit() {
     this.getPosts();
+
   }
 
 
@@ -81,6 +84,5 @@ export class PostListComponent implements OnInit {
       }
     }
   }
-
 
 }

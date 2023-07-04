@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./create-new-post.component.css']
 })
 export class CreateNewPostComponent {
+
   modal = document.getElementById("exampleModal3")
   createNewPost: FormGroup = new FormGroup({
     descrizione: new FormControl(null, Validators.required)
@@ -27,13 +28,15 @@ export class CreateNewPostComponent {
       // La richiesta è andata in errore
     }, () => {
       // La richiesta è stata completata con successo
-      this.closeModal()
+      this.closeModal();
+
     });
   }
 
   closeModal() {
     $("#exampleModal3").modal('toggle');
     $('.modal-backdrop').remove();
+    window.location.reload()
   }
 
 }
