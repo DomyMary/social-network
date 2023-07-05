@@ -11,7 +11,6 @@ import {Post} from "../../../shared/types/post";
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-
   posts = new Array<Post>();
   loading: boolean = true;
 

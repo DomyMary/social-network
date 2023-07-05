@@ -17,7 +17,6 @@ export class LoginComponent {
   constructor(private requestService: RequestService, private router: Router) {
   }
 
-
   login() {
     const body = {username: this.loginform.value.username, password: this.loginform.value.password};
       this.requestService.post('login', body).subscribe((res: any) => {

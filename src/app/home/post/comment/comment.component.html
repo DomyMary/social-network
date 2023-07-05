@@ -13,9 +13,13 @@
       </p>
       </li>
     </ng-container>
+    <div class="mt-4 p-2">
+    <app-create-new-comment [postId]="postId"></app-create-new-comment>
+    </div>
   </ul>
   <ng-template #elseBlock>
     <p> Non ci sono commenti</p>
+    <app-create-new-comment [postId]="postId"></app-create-new-comment>
   </ng-template>
 
 

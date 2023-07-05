@@ -12,7 +12,7 @@
             <label class="m-4 fw-bold text-primary">Cognome</label>
 
               <p class="mt-3 me-2 position-absolute top-0 end-0">
-                <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample1{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample1{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample1">
                   Details
                   <i class="bi bi-ticket-detailed ms-1"></i>
                 </a>
@@ -33,27 +33,18 @@
                   </button>
               </li>
               <p>
-                <a class="btn btn-outline-primary mx-2" data-bs-toggle="collapse" href="#multiCollapseExample{{i}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                  <i class="bi bi-plus-circle mx-2" ></i>
-                  Create a new comment
-                </a>
-                <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#multiCollapseExample2{{i}}" aria-expanded="false" aria-controls="multiCollapseExample2">
+
+                <a class="btn btn-outline-primary"  data-bs-toggle="collapse" href="#collapseExample{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                   All comments</a>
               </p>
 
 
               <div class="grid text-center w-100" style="row-gap: 0;">
-                <div class="g-col-6 ms-1 ">
-                  <div class="collapse multi-collapse" id="multiCollapseExample{{i}}">
-                    <div class="card card-body mb-4">
-                      <app-create-new-comment [postId]="post.id"></app-create-new-comment>
-                    </div>
-                  </div>
-                  </div>
+
                 <div class="g-col-6">
-                  <div class="collapse multi-collapse" id="multiCollapseExample2{{i}}">
+                  <div class="collapse" id="collapseExample{{i}}">
                     <div class="card card-body">
-                      <app-comment [commenti]="post.comments"></app-comment>
+                      <app-comment [commenti]="post.comments" [postId]="post.id"></app-comment>
                     </div>
                   </div>
                   </div>
