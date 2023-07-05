@@ -12,6 +12,7 @@
 
     <div class="overflow-auto w-100 mt-3">
       <ul class="list-group mt-3 border-secondary list-group-item-success">
+        <ng-container *ngIf="friends.length!=0;else elseBlock2">
       <ng-container *ngFor="let friend of friends" >
           <li class="list-group-item border border-2 border-success-subtle shadow-sm rounded m-2">
           <h5 class="mb-1">{{friend.username}}</h5>
@@ -24,9 +25,15 @@
             </div>
           </li>
         </ng-container>
+        </ng-container>
       </ul>
 
       </div>
     </div>
 </nav>
+  <ng-template #elseBlock2>
+  <p>
+    Non ci sono nuovi amici
+  </p>
+  </ng-template>
 </ng-template>

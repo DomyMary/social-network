@@ -5,11 +5,6 @@ import {PaginaPrincipaleComponent} from "./pagina-principale/pagina-principale.c
 
 const routes: Routes = [
   {path: '', component: PaginaPrincipaleComponent},
-
-
-
-
-
 ];
 
 @NgModule({

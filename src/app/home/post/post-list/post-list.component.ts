@@ -31,7 +31,8 @@ export class PostListComponent implements OnInit {
     return this.requestService.get("posts").subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
       console.log(res);
-      console.log(this.posts)
+      res.sort();
+      res.reverse();
       this.posts = res;
     }, (error) => {
       console.error(error);
