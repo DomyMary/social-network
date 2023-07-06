@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../shared/services/request.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {elementAt} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -37,8 +38,20 @@ export class LoginComponent {
   }
 
 
+  showPasssword () {
+    let password= document.getElementById("floatingPassword");
+    let eye=document.getElementById("eye")
+    if(password!.getAttribute('type')==='password'){
+      password!.setAttribute('type', 'text');
+      eye!.classList.remove("bi-eye-fill");
+      eye!.classList.add("bi-eye-slash-fill");
+    } else{
+      password!.setAttribute('type', 'password');
+      eye!.classList.remove("bi-eye-slash-fill");
+      eye!.classList.add("bi-eye-fill");
+    }
+  }
 
 
-
-
+  protected readonly elementAt = elementAt;
 }
