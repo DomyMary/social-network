@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {elementAt} from "rxjs";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,6 +20,8 @@ export class LoginComponent {
   }
 
   login() {
+    let button=document.getElementById("signIn");
+    button!.classList.add("disabled")
     const body = {username: this.loginform.value.username, password: this.loginform.value.password};
       this.requestService.post('login', body).subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
@@ -27,9 +30,10 @@ export class LoginComponent {
       // Setto all'interno del localStorage il token che abbiamo ricevuto
       localStorage.setItem('token', res.access_token);
       localStorage.setItem('username', this.loginform.value.username);
+
     }, (error) => {
       console.error(error);
-      alert("username o password sbagliata")
+      alert("Username o password sbagliati");
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
     }, () => {
       // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login

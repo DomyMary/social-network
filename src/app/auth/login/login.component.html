@@ -1,6 +1,6 @@
 <div class="d-flex align-items-center py-4 h-100 ">
-  <main class="form-signin w-100 m-auto">
-    <form [formGroup]="loginform">
+  <main class="form-signin w-100 m-auto" id="inizio">
+    <form [formGroup]="loginform" id='form'>
       <img class="img-thumbnail border border-danger" src="assets/image/logo.png" alt="" width="60" height="60"
            style="margin-left: 120px">
       <h1 class="display-6">Welcome</h1>
@@ -38,7 +38,7 @@
         Sign up
       </button>
       <app-register></app-register>
-      <button class="btn btn-danger w-80 " (click)="login()" style="margin-left: 15px" type="submit">Sign in</button>
+      <button id="signIn" class="btn btn-danger w-80 " (click)="login()" style="margin-left: 15px" type="submit">Sign in</button>
 
     </form>
   </main>
