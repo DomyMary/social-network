@@ -1,13 +1,29 @@
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
+
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Sign up</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
       </div>
       <div class="modal-body">
         <form class="row g-3 needs-validation" [formGroup]="registerform" novalidate>
+
+          <div *ngIf="registrazioneSucc" class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="bi flex-shrink-0 me-2 bi-check-circle-fill"></i>
+            <div>
+              Registration was successful
+            </div>
+          </div>
+
+          <div *ngIf="err" class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
+            <div>
+              Error Sistem
+            </div>
+          </div>
+
+
           <div class="col-md-4">
             <label for="validationCustom01" class="form-label">First Name</label>
             <input type="text" class="form-control" id="validationCustom01" formControlName="firstname">
@@ -17,9 +33,17 @@
             <input type="text" class="form-control" id="validationCustom02" formControlName="lastname">
           </div>
           <div class="col-md-4">
-            <label for="validationCustomUsername"  class="form-label">Username</label>
+            <label for="validationCustomUsername" class="form-label">Username</label>
             <div class="input-group has-validation">
-              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" formControlName="username">
+              <input type="text" class="form-control" [ngClass]="username?.invalid && alert? 'is-invalid': ''"
+                     id="validationCustomUsername" aria-describedby="inputGroupPrepend" formControlName="username">
+              <div *ngIf="password?.invalid && alert"
+                   class="invalid-feedback">
+
+                <div *ngIf="username?.errors?.['required']">
+                  Password is required.
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
@@ -36,45 +60,59 @@
 
           </div>
           <div class="col-md-3">
-              <label class="form-label">Genere</label>
+            <label class="form-label">Genere</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="genre" id="exampleRadios1" value="m" formControlName="genre" checked>
+              <input class="form-check-input" type="radio" name="genre" id="exampleRadios1" value="m"
+                     formControlName="genre" checked>
               <label class="form-check-label" for="exampleRadios1">
                 M
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="genre" id="exampleRadios2" formControlName="genre" value="f">
+              <input class="form-check-input" type="radio" name="genre" id="exampleRadios2" formControlName="genre"
+                     value="f">
               <label class="form-check-label" for="exampleRadios2">
-               F
+                F
               </label>
             </div>
           </div>
           <div class="col-md-3">
-          <label for="validationCustom05" class="form-label">Date of birth</label>
-          <input type="date" class="form-control" id="validationCustom05" style="width: 150px"  formControlName="dataOfBirth" >
-            </div>
+            <label for="validationCustom05" class="form-label">Date of birth</label>
+            <input type="date" class="form-control" id="validationCustom05" style="width: 150px"
+                   formControlName="dataOfBirth">
+          </div>
           <div class="col-md-6" style="margin-left: 50px">
             <label for="validationCustom03" class="form-label">Password</label>
-            <input type="password" class="form-control" id="validationCustom06"  formControlName="password">
+            <input type="password" class="form-control" id="validationCustom06"
+                   [ngClass]="password?.invalid && alert? 'is-invalid': '' " formControlName="password">
+
+            <div *ngIf="password?.invalid && alert"
+                 class="invalid-feedback">
+
+              <div *ngIf="password?.errors?.['required']">
+                Password is required or wrong password.
+              </div>
+            </div>
           </div>
 
           <div class="col-12">
-              <input class="form-check-input" type="checkbox" value="" id="invalidCheck"  formControlName="conditions">
-              <label class="form-check-label" for="invalidCheck">
-                Agree to terms and conditions
-              </label>
-              <div class="invalid-feedback">
-                You must agree before submitting.
-              </div>
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" formControlName="conditions">
+            <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="buttonSignUp" (click)="register()" type="button" class="btn btn-btn btn-danger w-80">Sign up</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Close</button>
+        <button id="buttonSignUp" (click)="register()" [ngClass]="buttonSignUp? 'disabled' : ' '" type="button"
+                class="btn btn-btn btn-danger w-80">Sign up
+        </button>
       </div>
     </div>
+
+
   </div>
 </div>

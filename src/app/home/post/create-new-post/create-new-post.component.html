@@ -8,14 +8,27 @@
       </div>
       <div class="modal-body" [formGroup]="createNewPost">
         <div class="mb-3">
+          <div *ngIf="err" class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
+            <div>
+              Error Sistem
+            </div>
+          </div>
           <label for="exampleFormControlTextarea1" class="form-label">Descrizione</label>
           <br>
-          <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="descrizione"></textarea>
+          <textarea type="text" class="form-control" id="exampleFormControlTextarea1" [ngClass]="descrizione?.invalid && alert? 'is-invalid':''" rows="3" formControlName="descrizione"></textarea>
+          <div *ngIf="descrizione?.invalid && alert"
+               class="invalid-feedback">
+
+            <div *ngIf="descrizione?.errors?.['required']">
+              Descrition is required.
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer" id="exampleModal4">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="buttonSave" type="button" class="btn btn-danger" (click)="create()">Save post</button>
+        <button id="buttonSave" type="button" class="btn btn-danger" [ngClass]="buttonSave? 'disabled':' '" (click)="create()">Save post</button>
       </div>
     </div>
   </div>

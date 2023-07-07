@@ -5,7 +5,12 @@
       <img class="img-thumbnail border border-danger" src="assets/image/logo.png" alt="" width="60" height="60"
            style="margin-left: 120px">
       <h1 class="display-6">Welcome</h1>
-
+      <div *ngIf="err" class="alert alert-danger d-flex align-items-center" role="alert">
+        <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
+        <div>
+          Password o username is not correct
+        </div>
+      </div>
       <div class="form-floating input-group">
 
         <input type="text" class="form-control shadow bg-body rounded " [ngClass]="username?.invalid && alert ? 'is-invalid': '' " id="floatingInput"
@@ -15,7 +20,7 @@
              class="invalid-feedback mb-1">
 
           <div *ngIf="username?.errors?.['required']" >
-            Username is required or wrong username
+            Username is required.
           </div>
         </div>
       </div>
@@ -32,7 +37,7 @@
         class="invalid-feedback">
 
           <div *ngIf="password?.errors?.['required']">
-            Password is required or wrong password.
+            Password is required.
           </div>
 
         </div>
@@ -53,7 +58,9 @@
         Sign up
       </button>
       <app-register></app-register>
-      <button id="signIn" class="btn btn-danger w-80 " (click)="login()" style="margin-left: 15px" type="submit">Sign in</button>
+      <button id="signIn" class="btn btn-danger w-80 " [ngClass]="buttonSignin? 'disabled':' '" (click)="login()" style="margin-left: 15px" type="submit">Sign in</button>
+
+
 
     </form>
   </main>

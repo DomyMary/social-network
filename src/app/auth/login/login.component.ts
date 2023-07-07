@@ -12,6 +12,8 @@ import {elementAt} from "rxjs";
 })
 export class LoginComponent {
   alert:boolean=false;
+  err:boolean=false;
+  buttonSignin: boolean = false;
   loginform: FormGroup=new FormGroup({
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
@@ -23,8 +25,7 @@ export class LoginComponent {
   }
 
   login() {
-    let button=document.getElementById("signIn");
-    button!.classList.add("disabled")
+    this.buttonSignin=true;
     const body = {username: this.loginform.value.username, password: this.loginform.value.password};
       this.requestService.post('login', body).subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
@@ -36,9 +37,11 @@ export class LoginComponent {
 
     }, (error) => {
       console.error(error);
-        button!.classList.remove("disabled")
+        if (this.loginform.value.username != null || this.loginform.value.password != null) {
+          this.err=true;
+        }
+        this.buttonSignin=false
         this.alert=true;
-
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
     }, () => {
       // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login

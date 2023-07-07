@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../shared/services/request.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -8,39 +8,68 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  registerform:FormGroup= new FormGroup( {
+  alert: boolean = false;
+  buttonSignUp: boolean = false;
+  registrazioneSucc: boolean = false
+  err:boolean=false;
+  registerform: FormGroup = new FormGroup({
     firstname: new FormControl(null),
-    lastname:new FormControl(null),
-    username:new FormControl(null, Validators.required),
-    city:new  FormControl(null),
+    lastname: new FormControl(null),
+    username: new FormControl(null, Validators.required),
+    city: new FormControl(null),
     state: new FormControl(null),
-    genre:new FormControl('m'),
+    genre: new FormControl('m'),
     dataOfBirth: new FormControl(null),
     password: new FormControl(null, Validators.required),
-    conditions: new FormControl(null,Validators.required)
+    conditions: new FormControl(null)
 
 
   })
+
+
+  get username() {
+    return this.registerform.get('username');
+  }
+
+  get password() {
+    return this.registerform.get('password');
+  }
+
+  get conditions() {
+    return this.registerform.get('conditions');
+  }
 
   constructor(private requestService: RequestService) {
   }
 
 
-
   register() {
-    let button=document.getElementById("buttonSignUp");
-    button!.classList.add("disabled")
-    this.requestService.post('register', {username: this.registerform.value.username, password: this.registerform.value.password}).subscribe((res: any) => {
-      console.log(res);
-    }, (error) => {
+    // disabilito buttonSignup
+    this.buttonSignUp = true
+    this.requestService.post('register', {
+      username: this.registerform.value.username,
+      password: this.registerform.value.password
+    }).subscribe((res: any) => {
+        console.log(res);
+      }, (error) => {
         console.error(error);
-        alert("Inserire username e password")
-      button!.classList.remove("disabled")
-      },() => {
+        if (this.registerform.value.username != null || this.registerform.value.password != null) {
+          this.err=true;
+        }
+        this.alert = true;
+        this.buttonSignUp = false //non disabilito
+        this.registrazioneSucc = false
+      }, () => {
         // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login
-      button!.classList.remove("disabled")
-      alert("La registrazione è avvenuta con successo")
+        this.buttonSignUp = false //non disabilito
+        this.registrazioneSucc = true;
+        this.alert = false;
+        this.err=false;
       }
     );
+  }
+
+  close() {
+    window.location.reload();
   }
 }
