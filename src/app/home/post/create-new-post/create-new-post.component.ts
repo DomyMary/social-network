@@ -22,10 +22,15 @@ export class CreateNewPostComponent {
   }
 
   create() {
+    let button=document.getElementById("buttonSave");
+    button!.classList.add("disabled")
     const newPost = {text: this.createNewPost.value.descrizione}
     this.requestService.post('posts', newPost).subscribe((res: any) => {
       console.log(res);
     }, (err) => {
+      console.log(err);
+      alert("c'è stato un errore")
+      button!.classList.remove("disabled")
       // La richiesta è andata in errore
     }, () => {
       // La richiesta è stata completata con successo

@@ -28,13 +28,18 @@ export class RegisterComponent {
 
 
   register() {
+    let button=document.getElementById("buttonSignUp");
+    button!.classList.add("disabled")
     this.requestService.post('register', {username: this.registerform.value.username, password: this.registerform.value.password}).subscribe((res: any) => {
       console.log(res);
     }, (error) => {
         console.error(error);
+        alert("Inserire username e password")
+      button!.classList.remove("disabled")
       },() => {
         // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login
-        alert("La registrazione è avvenuta con successo")
+      button!.classList.remove("disabled")
+      alert("La registrazione è avvenuta con successo")
       }
     );
   }

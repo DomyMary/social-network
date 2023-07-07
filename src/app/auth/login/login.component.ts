@@ -11,11 +11,14 @@ import {elementAt} from "rxjs";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  alert:boolean=false;
   loginform: FormGroup=new FormGroup({
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
   });
+  get username() { return this.loginform.get('username'); }
 
+  get password() { return this.loginform.get('password'); }
   constructor(private requestService: RequestService, private router: Router) {
   }
 
@@ -33,7 +36,9 @@ export class LoginComponent {
 
     }, (error) => {
       console.error(error);
-      alert("Username o password sbagliati");
+        button!.classList.remove("disabled")
+        this.alert=true;
+
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
     }, () => {
       // 3 La chiamata è stata completata con successo (SENZA ERRORI) e si può procedere con il login

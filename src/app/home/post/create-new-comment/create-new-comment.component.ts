@@ -22,14 +22,19 @@ export class CreateNewCommentComponent {
   }
 
   createComment(){
+    let button=document.getElementById("buttonSaveComment");
+    button!.classList.add("disabled")
     const body= {text: this.newCommentform.value.commento, post_id:this.postId}
     this.requestService.post("comments", body).subscribe((res:any)=>{
       this.com=res;
       console.log(res)
     }, (err) => {
       console.log(err)
+      alert("c'è stato un errore")
+      button!.classList.remove("disabled")
     }, ()=>{
       this.commandService.subject.next(this.com);
+      button!.classList.remove("disabled")
     })
   }
 
