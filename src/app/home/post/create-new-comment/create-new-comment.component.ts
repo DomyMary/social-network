@@ -3,7 +3,7 @@ import {RequestService} from "../../../shared/services/request.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Comment} from "../../../shared/types/comment";
 import {CommandService} from "../../../shared/services/command.service";
-import {text} from "@fortawesome/fontawesome-svg-core";
+
 
 @Component({
   selector: 'app-create-new-comment',

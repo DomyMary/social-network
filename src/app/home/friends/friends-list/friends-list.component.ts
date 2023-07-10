@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../../shared/services/request.service";
 import {User} from "../../../shared/types/user";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-friends-list',
@@ -12,6 +13,9 @@ export class FriendsListComponent implements OnInit{
   loading=true;
   errore:boolean=false;
 
+  friendsform: FormGroup = new FormGroup({
+    search: new FormControl(null),
+  })
   constructor(private requestService: RequestService) {
   }
 
@@ -48,6 +52,10 @@ export class FriendsListComponent implements OnInit{
       }
     }
   }
+
+
+
+
 
 
 }

@@ -4,6 +4,7 @@ import {RequestService} from "../../../shared/services/request.service";
 import {Router} from "@angular/router";
 
 
+
 @Component({
   selector: 'app-create-new-post',
   templateUrl: './create-new-post.component.html',
@@ -13,6 +14,7 @@ export class CreateNewPostComponent {
   buttonSave: boolean = false;
   alert: boolean = false;
   err: boolean = false
+  textError:string="";
   modal = document.getElementById("exampleModal3")
   createNewPost: FormGroup = new FormGroup({
     descrizione: new FormControl(null, Validators.required)
@@ -33,10 +35,12 @@ export class CreateNewPostComponent {
       console.log(res);
     }, (err) => {
       console.log(err);
+      console.log(err.status)
       if (this.createNewPost.value.descrizione != null) {
         this.err = true;
       } else{
         this.alert = true
+        this.textError=err.error.detail[0].msg;
       }
       this.buttonSave = false
       // La richiesta è andata in errore
