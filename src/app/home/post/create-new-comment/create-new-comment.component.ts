@@ -3,6 +3,7 @@ import {RequestService} from "../../../shared/services/request.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Comment} from "../../../shared/types/comment";
 import {CommandService} from "../../../shared/services/command.service";
+import {text} from "@fortawesome/fontawesome-svg-core";
 
 @Component({
   selector: 'app-create-new-comment',
@@ -11,6 +12,7 @@ import {CommandService} from "../../../shared/services/command.service";
 })
 export class CreateNewCommentComponent {
   @Input() postId: number =0;
+  text:boolean=false;
   com!:Comment;
   newCommentform=new FormGroup({
     commento: new FormControl(null, Validators.required)
@@ -18,6 +20,9 @@ export class CreateNewCommentComponent {
 
   })
 
+  get commento() {
+    return this.newCommentform.get('commento');
+  }
   constructor( private requestService: RequestService, private commandService: CommandService) {
   }
 
@@ -30,11 +35,12 @@ export class CreateNewCommentComponent {
       console.log(res)
     }, (err) => {
       console.log(err)
-      alert("c'è stato un errore")
+      this.text=true;
       button!.classList.remove("disabled")
     }, ()=>{
       this.commandService.subject.next(this.com);
       button!.classList.remove("disabled")
+      this.text=false;
     })
   }
 

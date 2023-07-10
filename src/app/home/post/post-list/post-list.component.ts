@@ -13,6 +13,8 @@ import {Post} from "../../../shared/types/post";
 export class PostListComponent implements OnInit {
   posts = new Array<Post>();
   loading: boolean = true;
+  errore:boolean=false;
+  errlike:boolean=false;
 
 
 
@@ -36,10 +38,12 @@ export class PostListComponent implements OnInit {
     }, (error) => {
       console.error(error);
       this.loading = error
+      this.errore=true
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
     }, () => {
       // 3 La chiamata è stata completata con successo (SENZA ERRORI)
       this.loading = false;
+      this.errore=false;
     });
   }
 
@@ -50,8 +54,10 @@ export class PostListComponent implements OnInit {
       console.log(res);
     }, (err) => {
       console.log(err)
+      this.errlike=true
     }, () => {
       this.getPosts();
+      this.errlike=false
     })
   }
 
@@ -60,8 +66,10 @@ export class PostListComponent implements OnInit {
       console.log(res);
     }, (err) => {
       console.log(err)
+      this.errlike=true;
     }, () => {
       this.getPosts();
+      this.errlike=false
     })
 
   }

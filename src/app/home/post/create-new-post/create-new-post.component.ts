@@ -38,7 +38,6 @@ export class CreateNewPostComponent {
       } else{
         this.alert = true
       }
-
       this.buttonSave = false
       // La richiesta è andata in errore
     }, () => {

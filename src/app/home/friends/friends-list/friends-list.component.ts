@@ -10,6 +10,7 @@ import {User} from "../../../shared/types/user";
 export class FriendsListComponent implements OnInit{
   friends=new Array<User>()
   loading=true;
+  errore:boolean=false;
 
   constructor(private requestService: RequestService) {
   }
@@ -25,12 +26,15 @@ export class FriendsListComponent implements OnInit{
       this.friends=res;
     },(error) => {
       console.error(error);
-      this.loading=error
+      this.loading=error;
+      this.errore=true;
+
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
     }, () => {
       // 3 La chiamata è stata completata con successo (SENZA ERRORI)
       this.loading=false;
       this.salvaIdUserAttuale();
+      this.errore=false;
 
 
     })
