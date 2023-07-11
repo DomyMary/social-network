@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-nav-post',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-post.component.css']
 })
 export class NavPostComponent {
+
 
 }

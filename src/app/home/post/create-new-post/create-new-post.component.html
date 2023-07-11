@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Create a new post</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="chiusura()" aria-label="Close"></button>
       </div>
       <div class="modal-body" [formGroup]="createNewPost">
         <div class="mb-3">
@@ -20,14 +20,14 @@
           <div *ngIf="descrizione?.invalid && alert"
                class="invalid-feedback">
 
-            <div *ngIf="descrizione?.errors?.['required']">
+            <div *ngIf="descrizione?.errors?.['required'] && alert">
               {{textError}}
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer" id="exampleModal4">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="chiusura()">Close</button>
         <button id="buttonSave" type="button" class="btn btn-danger" [ngClass]="buttonSave? 'disabled':' '" (click)="create()">Save post</button>
       </div>
     </div>

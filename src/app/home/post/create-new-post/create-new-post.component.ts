@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, DoCheck, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RequestService} from "../../../shared/services/request.service";
 import {Router} from "@angular/router";
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   templateUrl: './create-new-post.component.html',
   styleUrls: ['./create-new-post.component.css']
 })
-export class CreateNewPostComponent {
+export class CreateNewPostComponent{
   buttonSave: boolean = false;
   alert: boolean = false;
   err: boolean = false
@@ -24,11 +24,15 @@ export class CreateNewPostComponent {
     return this.createNewPost.get('descrizione');
   }
 
+
+
+
   constructor(private requestService: RequestService, private router: Router) {
 
   }
 
   create() {
+    this.textError=""
     this.buttonSave = true;
     const newPost = {text: this.createNewPost.value.descrizione}
     this.requestService.post('posts', newPost).subscribe((res: any) => {
@@ -57,4 +61,9 @@ export class CreateNewPostComponent {
     window.location.reload()
   }
 
+  chiusura(){
+    this.textError=""
+    this.alert=false;
+    this.err=false;
+  }
 }
