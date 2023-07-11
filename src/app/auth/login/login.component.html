@@ -58,7 +58,11 @@
         Sign up
       </button>
       <app-register></app-register>
-      <button id="signIn" class="btn btn-danger w-80 " [ngClass]="buttonSignin? 'disabled':' '" (click)="login()" style="margin-left: 15px" type="submit">Sign in</button>
+      <button id="signIn" class="btn btn-danger w-80 " [ngClass]="buttonSignin? 'disabled':' '" (click)="login()" style="margin-left: 10px" type="submit">
+        <div *ngIf="buttonSignin" class="spinner-border text-light spinner-border-sm w-25"  role="status">
+        </div>
+        Sign in
+      </button>
 
 
 
