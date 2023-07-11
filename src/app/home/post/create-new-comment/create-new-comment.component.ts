@@ -35,7 +35,9 @@ export class CreateNewCommentComponent {
       console.log(res)
     }, (err) => {
       console.log(err)
-      this.text=true;
+      if(err.error.detail[0].msg=="none is not an allowed value"){
+        this.text=true;
+      }
       button!.classList.remove("disabled")
     }, ()=>{
       this.commandService.subject.next(this.com);
