@@ -1,4 +1,3 @@
-
 <div class="d-flex align-items-center py-4 h-100 ">
   <main class="form-signin w-100 m-auto" id="inizio">
     <form [formGroup]="loginform" id='form'>
@@ -13,28 +12,30 @@
       </div>
       <div class="form-floating input-group">
 
-        <input type="text" class="form-control shadow bg-body rounded " [ngClass]="username?.invalid && alert ? 'is-invalid': '' " id="floatingInput"
+        <input type="text" class="form-control shadow bg-body rounded "
+               [ngClass]="username?.invalid && alert ? 'is-invalid': '' " id="floatingInput"
                placeholder="name@example.com" style="margin: 10px 0px 10px 0px" formControlName="username">
         <label class="mt-2" for="floatingInput">Username</label>
         <div *ngIf="username?.invalid && alert"
              class="invalid-feedback mb-1">
 
-          <div *ngIf="username?.errors?.['required']" >
+          <div *ngIf="username?.errors?.['required']">
             Username is required.
           </div>
         </div>
       </div>
       <div class="form-floating input-group">
-        <input type="password" class="form-control shadow bg-body rounded " [ngClass]="password?.invalid && alert ? 'is-invalid': '' " id="floatingPassword"
+        <input type="password" class="form-control shadow bg-body rounded "
+               [ngClass]="password?.invalid && alert ? 'is-invalid': '' " id="floatingPassword"
                formControlName="password" placeholder="Password">
         <label for="floatingPassword">Password</label>
         <div class="input-group-append">
-        <button class="input-group-text bg-white" style=" height: 59px">
-            <i id="eye"  class="bi bi-eye-fill" (click)="showPasssword()"></i>
-        </button>
+          <button class="input-group-text bg-white" style=" height: 59px">
+            <i id="eye" class="bi bi-eye-fill" (click)="showPasssword()"></i>
+          </button>
         </div>
         <div *ngIf="password?.invalid && alert"
-        class="invalid-feedback">
+             class="invalid-feedback">
 
           <div *ngIf="password?.errors?.['required']">
             Password is required.
@@ -49,8 +50,8 @@
           Remember me
         </label>
       </div>
-      <p><a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="#">Password
-        o username dimenticata?</a></p>
+      <p><a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="#">
+        Password o username dimenticata?</a></p>
 
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -58,12 +59,12 @@
         Sign up
       </button>
       <app-register></app-register>
-      <button id="signIn" class="btn btn-danger w-80 " [ngClass]="buttonSignin? 'disabled':' '" (click)="login()" style="margin-left: 10px" type="submit">
-        <div *ngIf="buttonSignin" class="spinner-border text-light spinner-border-sm w-25"  role="status">
+      <button id="signIn" class="btn btn-danger w-80 " [ngClass]="buttonSignin? 'disabled':' '" (click)="login()"
+              style="margin-left: 10px" type="submit">
+        <div *ngIf="buttonSignin" class="spinner-border text-light spinner-border-sm w-25" role="status">
         </div>
         Sign in
       </button>
-
 
 
     </form>

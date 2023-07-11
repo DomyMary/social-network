@@ -108,7 +108,10 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Close</button>
         <button id="buttonSignUp" (click)="register()" [ngClass]="buttonSignUp? 'disabled' : ' '" type="button"
-                class="btn btn-btn btn-danger w-80">Sign up
+                class="btn btn-btn btn-danger w-80">
+          <div *ngIf="buttonSignUp" class="spinner-border text-light spinner-border-sm w-25"  role="status">
+          </div>
+          Sign up
         </button>
       </div>
     </div>

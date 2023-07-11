@@ -12,6 +12,7 @@ import {CommandService} from "../../../shared/services/command.service";
 })
 export class CreateNewCommentComponent {
   @Input() postId: number =0;
+  buttonSaveComment:boolean=false
   text:boolean=false;
   com!:Comment;
   newCommentform=new FormGroup({
@@ -27,8 +28,7 @@ export class CreateNewCommentComponent {
   }
 
   createComment(){
-    let button=document.getElementById("buttonSaveComment");
-    button!.classList.add("disabled")
+    this.buttonSaveComment=true;
     const body= {text: this.newCommentform.value.commento, post_id:this.postId}
     this.requestService.post("comments", body).subscribe((res:any)=>{
       this.com=res;
@@ -38,10 +38,10 @@ export class CreateNewCommentComponent {
       if(err.error.detail[0].msg=="none is not an allowed value"){
         this.text=true;
       }
-      button!.classList.remove("disabled")
+      this.buttonSaveComment=false
     }, ()=>{
       this.commandService.subject.next(this.com);
-      button!.classList.remove("disabled")
+     this.buttonSaveComment=false
       this.text=false;
     })
   }

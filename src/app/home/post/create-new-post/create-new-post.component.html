@@ -28,7 +28,10 @@
       </div>
       <div class="modal-footer" id="exampleModal4">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="chiusura()">Close</button>
-        <button id="buttonSave" type="button" class="btn btn-danger" [ngClass]="buttonSave? 'disabled':' '" (click)="create()">Save post</button>
+        <button id="buttonSave" type="button" class="btn btn-danger" [ngClass]="buttonSave? 'disabled':' '" (click)="create()">
+          <div *ngIf="buttonSave" class="spinner-border text-light spinner-border-sm w-25"  role="status">
+          </div>
+          Save post</button>
       </div>
     </div>
   </div>
