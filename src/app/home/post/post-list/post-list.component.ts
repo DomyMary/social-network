@@ -31,10 +31,8 @@ export class PostListComponent implements OnInit {
     this.loading = true;
     return this.requestService.get("posts").subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
-      console.log(res);
-      res.sort();
       res.reverse();
-      // TODO: Doppia sort check
+      // TODO: Doppia sort check:    FATTO :)
       this.posts = res;
     }, (error) => {
       console.error(error);

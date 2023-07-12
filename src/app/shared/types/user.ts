@@ -9,4 +9,8 @@ export class User {
     this.password = password;
     this.username = username;
   }
+
+  public static getUserObj(): User{
+    return new User(0,'','');
+  }
 }
