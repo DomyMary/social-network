@@ -53,6 +53,12 @@ export class FriendsListComponent implements OnInit{
     }
   }
 
+//   searchFriends(){
+//     const c= this.friends.filter(value => value.username>= this.friendsform.value.search);
+//      console.log(c)
+// //dafare
+//
+//   }
 
 
 
