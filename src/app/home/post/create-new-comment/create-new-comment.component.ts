@@ -41,6 +41,7 @@ export class CreateNewCommentComponent {
       this.buttonSaveComment=false
     }, ()=>{
       this.commandService.subject.next(this.com);
+      // TODO: Emittiamo verso il componente padre che il commento è stato creato con successo (ci troviamo nel completo)
      this.buttonSaveComment=false
       this.text=false;
     })

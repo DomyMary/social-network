@@ -34,6 +34,7 @@ export class PostListComponent implements OnInit {
       console.log(res);
       res.sort();
       res.reverse();
+      // TODO: Doppia sort check
       this.posts = res;
     }, (error) => {
       console.error(error);

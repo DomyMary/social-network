@@ -22,8 +22,9 @@
         </div>
         <ng-container *ngIf="friends.length!=0;else elseBlock2">
       <ng-container *ngFor="let friend of friends" >
+
           <li class="list-group-item border border-2 border-success-subtle shadow-sm rounded m-2">
-          <h5 class="mb-1">{{friend.username}}</h5>
+            <h5 class="mb-1">{{friend.username}}</h5>
             <small>Information</small>
             <div class=" w-25 h-25" style="margin-left: 250px">
               <button class="btn btn-outline-success">
@@ -32,6 +33,7 @@
 
             </div>
           </li>
+
         </ng-container>
         </ng-container>
       </ul>

@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Comment} from "../../../shared/types/comment";
 import {CommandService} from "../../../shared/services/command.service";
 import {Observable, Subscription} from "rxjs";
@@ -14,7 +14,12 @@ export class CommentComponent implements OnInit, OnDestroy{
 
   sub:Subscription = new Subscription();
 
- ngOnInit() {
+  constructor(private commandService: CommandService) {
+  }
+
+
+
+  ngOnInit() {
 
    this.sub = this.commandService.subject.subscribe(value => {
      this.commenti.push(value);
@@ -24,7 +29,5 @@ export class CommentComponent implements OnInit, OnDestroy{
    this.sub?.unsubscribe();
  }
 
-  constructor(private commandService: CommandService) {
-  }
 
 }
