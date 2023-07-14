@@ -5,10 +5,10 @@
 <ng-template #elseBlock1>
   <nav class="navbar bg-body-tertiary mt-3">
     <div class="container-fluid">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search friends" aria-label="Search"
-               formControlName="search">
-        <button class="btn btn-outline-success">Search</button>
+      <form class="d-flex">
+        <input #box class="form-control me-2" type="search" placeholder="Search friends" aria-label="Search"
+            id="search"   formControlName="search"  (keyup.enter)="update(box.value)" (blur)="update(box.value)" >
+        <button class="btn btn-outline-success" type="button" (click)="searchFriends()"> Search</button>
       </form>
 
       <div class="overflow-auto w-100 mt-3">
