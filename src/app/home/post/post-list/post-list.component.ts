@@ -14,7 +14,7 @@ export class PostListComponent implements OnInit {
   posts = new Array<Post>();
   loading: boolean = true;
   errore:boolean=false;
-  errlike:boolean=false;
+
 
 
 
@@ -32,6 +32,7 @@ export class PostListComponent implements OnInit {
     return this.requestService.get("posts").subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
       res.reverse();
+      console.log(res)
       // TODO: Doppia sort check:    FATTO :)
       this.posts = res;
     }, (error) => {
@@ -47,49 +48,6 @@ export class PostListComponent implements OnInit {
   }
 
 
-  addLike(postId: number) {
-    const body = {post_id: postId}
-    this.requestService.post("add-like/" + postId, body).subscribe((res: any) => {
-      console.log(res);
-    }, (err) => {
-      console.log(err)
-      this.errlike=true
-    }, () => {
-      this.getPosts();
-      this.errlike=false
-    })
-  }
 
-  removelike(postId: number, idLike: number) {
-    this.requestService.delete("remove-like/" + idLike + "/" + postId).subscribe((res: any) => {
-      console.log(res);
-    }, (err) => {
-      console.log(err)
-      this.errlike=true;
-    }, () => {
-      this.getPosts();
-      this.errlike=false
-    })
-
-  }
-
-
-  clickLike(postId: number, arrayLike: Array<any>) {
-    if (arrayLike.length == 0) {
-      this.addLike(postId);
-      this.getPosts();
-    } else {
-      for (let i = 0; i < arrayLike.length; i++) {
-        if (arrayLike[i].user_id + '' !== localStorage.getItem(`id`) ) {
-          this.addLike(postId)
-
-          break
-        } else {
-          this.removelike(postId, arrayLike[i].id)
-          break
-        }
-      }
-    }
-  }
 
 }

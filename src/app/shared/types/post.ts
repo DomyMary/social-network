@@ -17,5 +17,9 @@ export class Post {
     this.comments = comments;
   }
 
+  public static getPostObj(): Post{
+    return new Post(0,'',0,[],[]);
+  }
+
 
 }
