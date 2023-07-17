@@ -1,0 +1,19 @@
+
+  <ul class="list-group list-group-item-primary" *ngIf="commenti.length!=0; else elseBlock ">
+    <ng-container *ngIf="loading">
+      <div class="spinner-border" role="status">
+      </div>
+    </ng-container>
+    <ng-container *ngFor="let comment of commenti" >
+      <app-comment [comment]=comment></app-comment>
+    </ng-container>
+    <div class="mt-4 p-2">
+    <app-create-new-comment [postId]="postId"></app-create-new-comment>
+    </div>
+  </ul>
+  <ng-template #elseBlock>
+    <p> Non ci sono commenti</p>
+    <app-create-new-comment [postId]="postId"></app-create-new-comment>
+  </ng-template>
+
+

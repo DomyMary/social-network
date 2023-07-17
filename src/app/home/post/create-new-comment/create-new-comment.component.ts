@@ -11,7 +11,7 @@ import {CommandService} from "../../../shared/services/command.service";
   styleUrls: ['./create-new-comment.component.css']
 })
 export class CreateNewCommentComponent {
-  @Input() postId: number =0;
+  @Input() postId:number=0;
   buttonSaveComment:boolean=false
   text:boolean=false;
   com!:Comment;
@@ -40,7 +40,7 @@ export class CreateNewCommentComponent {
       }
       this.buttonSaveComment=false
     }, ()=>{
-      this.commandService.subject.next(this.com);
+      // this.commandService.subject.next(this.com);
       // TODO: Emittiamo verso il componente padre che il commento è stato creato con successo (ci troviamo nel completo)
      this.buttonSaveComment=false
       this.text=false;

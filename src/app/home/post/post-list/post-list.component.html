@@ -4,14 +4,14 @@
     Error Sistem
   </div>
 </div>
-<ng-container *ngIf="loading==true; else elseBlock1">
+<ng-container *ngIf="loading; else elseBlock1">
   <div class="spinner-border" role="status">
   </div>
 </ng-container>
 <ng-template #elseBlock1 >
 <ng-container *ngIf="posts.length!=0; else elseBlock">
         <div *ngFor="let post of posts; index as i " class="card rounded w-100 mb-4" style="width: 18rem; background:	#f5f5f5">
-        <app-post [post]="post" (newItemEvent)="getPosts()" [index]="i"></app-post>
+        <app-post [post]="post" [index]="i"></app-post>
         </div>
 
   </ng-container>

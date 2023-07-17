@@ -4,6 +4,12 @@
       <img class="img-thumbnail border border-danger" src="assets/image/logo.png" alt="" width="60" height="60"
            style="margin-left: 120px">
       <h1 class="display-6">Welcome</h1>
+      <div *ngIf="state" class="alert alert-danger d-flex align-items-center" role="alert">
+        <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
+        <div>
+          Error sistem
+        </div>
+      </div>
       <div *ngIf="err" class="alert alert-danger d-flex align-items-center" role="alert">
         <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
         <div>

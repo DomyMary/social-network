@@ -37,7 +37,7 @@ export class PostListComponent implements OnInit {
       this.posts = res;
     }, (error) => {
       console.error(error);
-      this.loading = error
+      this.loading =false;
       this.errore=true
       // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
     }, () => {
