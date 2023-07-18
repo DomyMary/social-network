@@ -44,17 +44,14 @@
     <p>
 
       <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample{{index}}" role="button"
-         aria-expanded="false" aria-controls="collapseExample">
+         aria-expanded="false" aria-controls="collapseExample" >
         All comments</a>
     </p>
-
-
     <div class="grid text-center w-100" style="row-gap: 0;">
-
       <div class="g-col-6">
         <div class="collapse" id="collapseExample{{index}}">
           <div class="card card-body">
-            <app-comment-list [postId]="post.id"></app-comment-list>
+            <app-comment-list [commenti]="post.comments" [postId]="post.id"></app-comment-list>
           </div>
         </div>
       </div>

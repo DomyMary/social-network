@@ -11,37 +11,19 @@ import {Post} from "../../../shared/types/post";
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit, OnDestroy {
-  commenti: Array<Comment> = new Array<Comment>();
+  @Input() commenti: Array<Comment> = new Array<Comment>();
   @Input() postId: number = 0;
-  loading: boolean = false;
- post:Post=Post.getPostObj()
+  post: Post = Post.getPostObj()
   sub: Subscription = new Subscription();
 
   constructor(private commandService: CommandService, private requestService: RequestService) {
   }
 
 
-  getCommet() {
-    this.loading = true;
-    return this.requestService.get("posts/" + this.postId).subscribe((res: any) => {
-      // 1 Leggo la risposta ricevuta dal server
-      this.commenti = res.comments
-      // TODO: Doppia sort check:    FATTO :)
-    }, (error) => {
-      console.error(error);
-      this.loading = false;
-      // 2 La chiamata è andata in errore e di conseguenza bisognerebbe notificare l'utente
-    }, () => {
-      // 3 La chiamata è stata completata con successo (SENZA ERRORI)
-      this.loading = false;
-    });
-
-  }
-
   ngOnInit() {
-    this.getCommet();
-    this.sub = this.commandService.subject.subscribe(value => {
-      this.commenti.push(value);
+    this.commenti;
+    this.sub = this.commandService.subject.subscribe(() => {
+      this.ngOnInit();
     })
   }
 
@@ -49,5 +31,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
+getComment(){
 
+}
 }
