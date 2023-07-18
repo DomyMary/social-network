@@ -15,6 +15,7 @@ export class CreateNewCommentComponent {
   @Output() newItemEvent= new EventEmitter<number>;
   buttonSaveComment:boolean=false
   text:boolean=false;
+  error:boolean=false;
 
 
   addnewItem(value:number){
@@ -34,6 +35,7 @@ export class CreateNewCommentComponent {
   }
 
   createComment(){
+    this.error=false
     this.buttonSaveComment=true;
     const body= {text: this.newCommentform.value.commento, post_id:this.postId}
     this.requestService.post("comments", body).subscribe((res:any)=>{
@@ -44,10 +46,13 @@ export class CreateNewCommentComponent {
       this.buttonSaveComment=false
       if(err.error.detail[0].msg=="none is not an allowed value"){
         this.text=true;
+      } else{
+        this.error=true
       }
 
     }, ()=>{
        this.addnewItem(this.postId);
+       this.error=false
 
       // TODO: Emittiamo verso il componente padre che il commento è stato creato con successo (ci troviamo nel completo)
      this.buttonSaveComment=false

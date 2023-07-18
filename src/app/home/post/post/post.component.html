@@ -25,7 +25,7 @@
   <div *ngIf="errlike" class="alert alert-danger d-flex align-items-center" role="alert">
     <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
     <div>
-      Error Sistem
+      Error system
     </div>
   </div>
   <ul class="nav nav-pills  mb-4">
@@ -52,11 +52,13 @@
         <div class="collapse" id="collapseExample{{index}}">
           <div class="card card-body">
             <app-comment-list (newItemEvent)="getPost(post.id)" [commenti]="post.comments" [postId]="post.id"></app-comment-list>
-            <div *ngIf="errPost" class="alert alert-danger d-flex align-items-center" role="alert">
+            <div *ngIf="errPost" class="alert alert-danger d-flex align-items-center mt-2" role="alert">
               <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
               <div>
                 Error loading comments
               </div>
+            </div>
+            <div *ngIf="loadingPost" class="spinner-border text-primary spinner-border d-flex justify-content-center" style="width: 10px" role="status">
             </div>
           </div>
         </div>

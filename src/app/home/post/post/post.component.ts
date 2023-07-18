@@ -13,6 +13,7 @@ export class PostComponent {
   errlike: boolean = false;
   loading: boolean = false;
   errPost:boolean=false;
+  loadingPost:boolean=false;
 
   constructor(private requestService: RequestService) {
   }
@@ -36,6 +37,7 @@ export class PostComponent {
 
 
   getPost(idPost:number){
+    this.loadingPost=true;
     this.errPost=false;
     this.requestService.get("posts/" + idPost).subscribe((res:any)=>{
       console.log(res)
@@ -44,8 +46,10 @@ export class PostComponent {
     }, (err) => {
       console.log(err)
       this.errPost=true
+      this.loadingPost=false
     }, ()=>{
       this.errPost=false
+      this.loadingPost=false
 
     })
   }
