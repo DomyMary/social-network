@@ -15,9 +15,6 @@ export class PostListComponent implements OnInit {
   loading: boolean = true;
   errore:boolean=false;
 
-
-
-
   constructor(private requestService: RequestService) {
   }
 

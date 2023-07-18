@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {RequestService} from "../../../shared/services/request.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Comment} from "../../../shared/types/comment";
@@ -12,9 +12,15 @@ import {CommandService} from "../../../shared/services/command.service";
 })
 export class CreateNewCommentComponent {
   @Input() postId:number=0;
+  @Output() newItemEvent= new EventEmitter<number>;
   buttonSaveComment:boolean=false
   text:boolean=false;
-  com!:Comment;
+
+
+  addnewItem(value:number){
+    this.newItemEvent.emit(value);
+
+  }
   newCommentform=new FormGroup({
     commento: new FormControl(null, Validators.required)
 
@@ -24,23 +30,25 @@ export class CreateNewCommentComponent {
   get commento() {
     return this.newCommentform.get('commento');
   }
-  constructor( private requestService: RequestService, private commandService: CommandService) {
+  constructor( private requestService: RequestService) {
   }
 
   createComment(){
     this.buttonSaveComment=true;
     const body= {text: this.newCommentform.value.commento, post_id:this.postId}
     this.requestService.post("comments", body).subscribe((res:any)=>{
-      this.com=res;
       console.log(res)
+
     }, (err) => {
       console.log(err)
+      this.buttonSaveComment=false
       if(err.error.detail[0].msg=="none is not an allowed value"){
         this.text=true;
       }
-      this.buttonSaveComment=false
+
     }, ()=>{
-      this.commandService.subject.next(this.com);
+       this.addnewItem(this.postId);
+
       // TODO: Emittiamo verso il componente padre che il commento è stato creato con successo (ci troviamo nel completo)
      this.buttonSaveComment=false
       this.text=false;

@@ -5,7 +5,7 @@
       <app-comment [comment]=comment></app-comment>
     </ng-container>
     <div class="mt-4 p-2">
-    <app-create-new-comment [postId]="postId"></app-create-new-comment>
+    <app-create-new-comment (newItemEvent)="addnewItem(postId)" [postId]="postId"></app-create-new-comment>
     </div>
   </ul>
   <ng-template #elseBlock>

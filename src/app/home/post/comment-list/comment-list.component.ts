@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, DoCheck, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output} from '@angular/core';
 import {Comment} from "../../../shared/types/comment";
 import {CommandService} from "../../../shared/services/command.service";
 import {Observable, Subscription} from "rxjs";
@@ -10,11 +10,20 @@ import {Post} from "../../../shared/types/post";
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.css']
 })
-export class CommentListComponent implements OnInit, OnDestroy {
+export class CommentListComponent implements OnInit{
   @Input() commenti: Array<Comment> = new Array<Comment>();
   @Input() postId: number = 0;
-  post: Post = Post.getPostObj()
-  sub: Subscription = new Subscription();
+  @Output() newItemEvent = new EventEmitter<number>;
+
+
+  addnewItem(value:number){
+    console.log("ciaooo")
+    this.newItemEvent.emit(value);
+
+
+  }
+
+
 
   constructor(private commandService: CommandService, private requestService: RequestService) {
   }
@@ -22,16 +31,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.commenti;
-    this.sub = this.commandService.subject.subscribe(() => {
-      this.ngOnInit();
-    })
+
   }
 
-  ngOnDestroy() {
-    this.sub?.unsubscribe();
-  }
-
-getComment(){
-
-}
 }

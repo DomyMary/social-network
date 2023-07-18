@@ -12,6 +12,7 @@ export class PostComponent {
   @Input() index: number = 0;
   errlike: boolean = false;
   loading: boolean = false;
+  errPost:boolean=false;
 
   constructor(private requestService: RequestService) {
   }
@@ -34,7 +35,20 @@ export class PostComponent {
   }
 
 
+  getPost(idPost:number){
+    this.errPost=false;
+    this.requestService.get("posts/" + idPost).subscribe((res:any)=>{
+      console.log(res)
+      this.post=res
+      console.log(this.post.comments.length)
+    }, (err) => {
+      console.log(err)
+      this.errPost=true
+    }, ()=>{
+      this.errPost=false
 
+    })
+  }
 
 }
 
