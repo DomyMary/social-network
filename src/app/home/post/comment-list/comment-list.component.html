@@ -10,7 +10,7 @@
   </ul>
   <ng-template #elseBlock>
     <p> Non ci sono commenti</p>
-    <app-create-new-comment [postId]="postId"></app-create-new-comment>
+    <app-create-new-comment (newItemEvent)="addnewItem(postId)"  [postId]="postId"></app-create-new-comment>
   </ng-template>
 
 
