@@ -46,11 +46,10 @@ export class CreateNewCommentComponent {
       this.buttonSaveComment = false
       if (err.error.detail[0].msg == "none is not an allowed value") {
         this.text = true;
-      } else {
-        this.error = true
       }
-
+        this.error = true
     }, () => {
+      this.newCommentform.value.commento=null;
       this.addnewItem(this.postId);
       this.error = false
       this.buttonSaveComment = false
