@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {RequestService} from "../../../shared/services/request.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Comment} from "../../../shared/types/comment";
-import {CommandService} from "../../../shared/services/command.service";
 
 
 @Component({
@@ -11,18 +9,19 @@ import {CommandService} from "../../../shared/services/command.service";
   styleUrls: ['./create-new-comment.component.css']
 })
 export class CreateNewCommentComponent {
-  @Input() postId:number=0;
-  @Output() newItemEvent= new EventEmitter<number>;
-  buttonSaveComment:boolean=false
-  text:boolean=false;
-  error:boolean=false;
+  @Input() postId: number = 0;
+  @Output() newItemEvent = new EventEmitter<number>;
+  buttonSaveComment: boolean = false
+  text: boolean = false;
+  error: boolean = false;
 
 
-  addnewItem(value:number){
+  addnewItem(value: number) {
     this.newItemEvent.emit(value);
 
   }
-  newCommentform=new FormGroup({
+
+  newCommentform = new FormGroup({
     commento: new FormControl(null, Validators.required)
 
 
@@ -31,32 +30,31 @@ export class CreateNewCommentComponent {
   get commento() {
     return this.newCommentform.get('commento');
   }
-  constructor( private requestService: RequestService) {
+
+  constructor(private requestService: RequestService) {
   }
 
-  createComment(){
-    this.error=false
-    this.buttonSaveComment=true;
-    const body= {text: this.newCommentform.value.commento, post_id:this.postId}
-    this.requestService.post("comments", body).subscribe((res:any)=>{
+  createComment() {
+    this.error = false
+    this.buttonSaveComment = true;
+    const body = {text: this.newCommentform.value.commento, post_id: this.postId}
+    this.requestService.post("comments", body).subscribe((res: any) => {
       console.log(res)
 
     }, (err) => {
       console.log(err)
-      this.buttonSaveComment=false
-      if(err.error.detail[0].msg=="none is not an allowed value"){
-        this.text=true;
-      } else{
-        this.error=true
+      this.buttonSaveComment = false
+      if (err.error.detail[0].msg == "none is not an allowed value") {
+        this.text = true;
+      } else {
+        this.error = true
       }
 
-    }, ()=>{
-       this.addnewItem(this.postId);
-       this.error=false
-
-      // TODO: Emittiamo verso il componente padre che il commento è stato creato con successo (ci troviamo nel completo)
-     this.buttonSaveComment=false
-      this.text=false;
+    }, () => {
+      this.addnewItem(this.postId);
+      this.error = false
+      this.buttonSaveComment = false
+      this.text = false;
     })
   }
 

@@ -17,13 +17,8 @@ export class CommentListComponent implements OnInit{
 
 
   addnewItem(value:number){
-    console.log("ciaooo")
     this.newItemEvent.emit(value);
-
-
   }
-
-
 
   constructor(private commandService: CommandService, private requestService: RequestService) {
   }

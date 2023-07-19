@@ -1,8 +1,7 @@
 <div class="d-flex align-items-center py-4 h-100 ">
   <main class="form-signin w-100 m-auto" id="inizio">
     <form [formGroup]="loginform" id='form'>
-      <img class="img-thumbnail border border-danger" src="assets/image/logo.png" alt="" width="60" height="60"
-           style="margin-left: 120px">
+      <img class="img-thumbnail border border-danger rounded mx-auto d-block" src="assets/image/logo.png" alt="" width="60" height="60">
       <h1 class="display-6">Welcome</h1>
       <div *ngIf="state" class="alert alert-danger d-flex align-items-center" role="alert">
         <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
@@ -18,14 +17,14 @@
       </div>
       <div class="form-floating input-group">
 
-        <input type="text" class="form-control shadow bg-body rounded "
+        <input type="text" class="form-control shadow bg-body rounded mt-3 mb-3"
                [ngClass]="username?.invalid && alert ? 'is-invalid': '' " id="floatingInput"
-               placeholder="name@example.com" style="margin: 10px 0px 10px 0px" formControlName="username">
+               placeholder="name@example.com" formControlName="username">
         <label class="mt-2" for="floatingInput">Username</label>
         <div *ngIf="username?.invalid && alert"
              class="invalid-feedback mb-1">
 
-          <div *ngIf="username?.errors?.['required']">
+          <div *ngIf="username?.errors?.['required']" class="mb-2">
             Username is required.
           </div>
         </div>
@@ -36,7 +35,7 @@
                formControlName="password" placeholder="Password">
         <label for="floatingPassword">Password</label>
         <div class="input-group-append">
-          <button class="input-group-text bg-white" style=" height: 59px">
+          <button id="buttonEye" class="input-group-text bg-white shadow bg-body rounded">
             <i id="eye" class="bi bi-eye-fill" (click)="showPasssword()"></i>
           </button>
         </div>
@@ -60,18 +59,20 @@
         Password o username dimenticata?</a></p>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-              style="margin-left: 120px">
-        Sign up
-      </button>
-      <app-register></app-register>
-      <button id="signIn" class="btn btn-danger w-80 " [ngClass]="buttonSignin? 'disabled':' '" (click)="login()"
-              style="margin-left: 10px" type="submit">
-        <div *ngIf="buttonSignin" class="spinner-border text-light spinner-border-sm w-25" role="status">
-        </div>
-        Sign in
-      </button>
+      <div class="d-flex flex-row-reverse bd-highlight">
+        <button id="signIn" class="btn btn-danger w-80 p-2 bd-highlight" [ngClass]="buttonSignin? 'disabled':' '" (click)="login()"
+                type="submit">
+          <div *ngIf="buttonSignin" class="spinner-border text-light spinner-border-sm w-25" role="status">
+          </div>
+          Sign in
+        </button>
+        <button type="button" class="btn btn-danger p-2 bd-highlight me-2" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+          Sign up
+        </button>
+        <app-register></app-register>
 
+      </div>
 
     </form>
   </main>
