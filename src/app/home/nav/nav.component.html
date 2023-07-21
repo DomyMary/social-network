@@ -1,16 +1,13 @@
-<nav id="nav-principale" class="navbar navbar-expand-lg ">
+<nav id="nav-principale" class="navbar navbar-expand-lg " xmlns="http://www.w3.org/1999/html">
+
   <div class="container-fluid">
     <img class="img-thumbnail" src="assets/image/logo.png" alt="" width="60" height="60">
     <a class="navbar-brand fst-italic text-light fs-3 ms-3" >SaverNike Network</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 ">
+    <div class="collapse navbar-collapse ">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item ">
-          <a class="nav-link active mx-5 text-light fw-bold" aria-current="page" href="http://localhost/post">Home</a>
+          <a class="nav-link active mx-4  text-light fw-bold" aria-current="page" href="http://localhost/post">Home</a>
         </li>
         <li class="nav-item ">
           <div class="mt-1 ">
@@ -21,25 +18,43 @@
           </div>
         </li>
       </ul>
-
-      <div class="dropdown">
-        <button type="button" class="btn btn-light mx-2 dropdown-toggle" data-bs-toggle="dropdown"
-                aria-expanded="false">
-          <i class="bi bi-bell"></i>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">.....</a></li>
-          <li><a class="dropdown-item" href="#">....</a></li>
-          <li><a class="dropdown-item" href="#">...</a></li>
+    </div>
+    <div class="dropdown">
+    <button type="button" class="btn btn-light mx-2 dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false">
+      <i class="bi bi-bell"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">.....</a></li>
+      <li><a class="dropdown-item" href="#">....</a></li>
+      <li><a class="dropdown-item" href="#">...</a></li>
+    </ul>
+    <button type="button" class="btn btn-light mx-2">
+      <i class="bi bi-chat"></i>
+    </button>
+    <a type="button" class="btn btn-light mx-2" (click)="logout()" href="http://localhost:4200/">
+      <i class="bi bi-box-arrow-right"></i>
+    </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="d-lg-none">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 " style="margin-left: 125px">
+          <li class="nav-item ">
+            <a class="nav-link active mx-4  text-light fw-bold" aria-current="page" href="http://localhost/post">Home</a>
+          </li>
+          <li class="nav-item ">
+              <span class="text-light fw-bold ms-4"> Video</span>
+              <a type="button" class="btn btn-light mx-2" href="https://www.youtube.com/@savernike" target="_blank">
+                <i class="bi bi-youtube"></i>
+              </a>
+          </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-light mx-2">
-        <i class="bi bi-chat"></i>
-      </button>
-      <a type="button" class="btn btn-light mx-2" (click)="logout()" href="http://localhost:4200/">
-        <i class="bi bi-box-arrow-right"></i>
-      </a>
     </div>
+  </div>
   </div>
 </nav>
 

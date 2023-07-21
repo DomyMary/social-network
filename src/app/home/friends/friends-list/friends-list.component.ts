@@ -58,9 +58,18 @@ export class FriendsListComponent implements OnInit {
   }
 
   searchFriends() {
-    console.log("ciao")
     console.log(this.searchInput)
-    this.friends=this.friends.filter(value => value.username === this.searchInput);
+    this.friends=this.friends.filter(value =>
+      value.username.includes(this.searchInput));
+
+
+
+    // this.friends.forEach( (value) => {
+    //   if(value.username.includes(this.searchInput)){
+    //
+    //   }
+    //
+    // })
 
 
   }
