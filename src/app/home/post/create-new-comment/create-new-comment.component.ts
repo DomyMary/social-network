@@ -44,7 +44,7 @@ export class CreateNewCommentComponent {
     }, (err) => {
       console.log(err)
       this.buttonSaveComment = false
-      if (err.error.detail[0].msg == "none is not an allowed value") {
+      if (err.error.detail?.[0].msg == "none is not an allowed value") {
         this.text = true;
       }
         this.error = true
@@ -54,6 +54,7 @@ export class CreateNewCommentComponent {
       this.error = false
       this.buttonSaveComment = false
       this.text = false;
+
     })
   }
 

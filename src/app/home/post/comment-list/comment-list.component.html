@@ -20,6 +20,17 @@
     </div>
   </ul>
   <ng-template #elseBlock>
+    <div *ngIf="errPost" class="alert alert-danger d-flex align-items-center mt-1 mb-2" role="alert">
+      <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
+      <div>
+        Error loading comments
+      </div>
+      <button type="button" class="btn btn-outline-dark ms-4" (click)="addnewItem(postId)"> Riprova</button>
+    </div>
+    <div *ngIf="loadingPost" class="text-center mb-2">
+      <div class="spinner-border text-primary spinner-border" role="status">
+      </div>
+    </div>
     <p> Non ci sono commenti</p>
     <app-create-new-comment (newItemEvent)="addnewItem(postId)"  [postId]="postId"></app-create-new-comment>
   </ng-template>
