@@ -3,12 +3,15 @@
   </div>
 </ng-container>
 <ng-template #elseBlock1>
-  <nav class="navbar-toggler bg-body-tertiary mt-3">
+  <nav class="navbar-toggler bg-body-tertiary mt-3 stichy sticky-top">
     <div class="container-fluid">
       <form class="d-flex">
         <input #box class="form-control me-2" type="search" placeholder="Search friends" aria-label="Search"
             id="search"   formControlName="search"   (keyup.enter)="update(box.value)" (blur)="update(box.value)" >
         <button class="btn btn-outline-success" type="button" (click)="searchFriends()"> Search</button>
+        <button class="btn btn-outline-success ms-2" type="button" (click)="getFriends()">
+          <i class="bi bi-arrow-clockwise"></i>
+        </button>
       </form>
 
       <div class="overflow-auto w-100 mt-3">

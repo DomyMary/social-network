@@ -6,5 +6,6 @@ import {Comment} from "../types/comment";
   providedIn: 'root'
 })
 export class CommandService {
-subject=new Subject<Comment>();
+subject=new Subject<any>();
+
 }

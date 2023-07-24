@@ -9,8 +9,11 @@
       Create a new post
     </div>
     <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search post" aria-label="Search">
-      <button class="btn btn-outline-primary" type="button">Search</button>
+      <input #box class="form-control me-2" type="search" placeholder="Search post" aria-label="Search"  (keyup.enter)="update(box.value)" (blur)="update(box.value)">
+      <button class="btn btn-outline-primary" type="button" (click)="searchPost()">Search</button>
+      <button class="btn btn-outline-primary ms-2" type="button" (click)="riaggiorna()">
+        <i class="bi bi-arrow-clockwise"></i>
+      </button>
     </form>
   </div>
 </nav>

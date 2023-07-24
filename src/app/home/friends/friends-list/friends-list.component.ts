@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../../shared/services/request.service";
 import {User} from "../../../shared/types/user";
 import {FormControl, FormGroup} from "@angular/forms";
+import {CommandService} from "../../../shared/services/command.service";
 
 @Component({
   selector: 'app-friends-list',
@@ -21,6 +22,7 @@ export class FriendsListComponent implements OnInit {
 
   ngOnInit() {
     this.getFriends();
+
   }
 
   update(value: string) {
@@ -62,14 +64,6 @@ export class FriendsListComponent implements OnInit {
     this.friends=this.friends.filter(value =>
       value.username.includes(this.searchInput));
 
-
-
-    // this.friends.forEach( (value) => {
-    //   if(value.username.includes(this.searchInput)){
-    //
-    //   }
-    //
-    // })
 
 
   }
