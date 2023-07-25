@@ -12,7 +12,8 @@
           </span>
 
   <input type="text" class="form-control" placeholder="Write comment..." aria-label="Sizing example input"
-         aria-describedby="inputGroup-sizing-default" [ngClass]="commento?.invalid && text? 'is-invalid':''"
+         aria-describedby="inputGroup-sizing-default"
+         [ngClass]="commento?.invalid && text ? 'is-invalid':''"
          formControlName="commento">
   <div *ngIf="commento?.invalid && text"
        class="invalid-feedback">
@@ -22,14 +23,15 @@
     </div>
   </div>
 </div>
-<div class=" d-flex justify-content-end" >
-    <button id="buttonSaveComment" type="button" class="btn btn-outline-primary ms-4"
-            [ngClass]="buttonSaveComment? 'disabled':''" (click)="createComment()">
-      <div *ngIf="buttonSaveComment" class="spinner-border text-primary spinner-border-sm"  role="status">
-      </div>
-      Save comment
-    </button>
-  </div>
+<div class=" d-flex justify-content-end">
+  <button id="buttonSaveComment" type="button" class="btn btn-outline-primary ms-4"
+          [ngClass]="[buttonSaveComment? 'disabled':'', loadingPost || errPost? 'disabled':'']"
+          (click)="createComment()">
+    <div *ngIf="buttonSaveComment" class="spinner-border text-primary spinner-border-sm" role="status">
+    </div>
+    Save comment
+  </button>
+</div>
 
 
 

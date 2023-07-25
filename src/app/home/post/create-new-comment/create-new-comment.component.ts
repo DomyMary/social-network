@@ -11,6 +11,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class CreateNewCommentComponent {
   @Input() postId: number = 0;
   @Output() newItemEvent = new EventEmitter<number>;
+  @Input() loadingPost=false
+  @Input() errPost=false
   buttonSaveComment: boolean = false
   text: boolean = false;
   error: boolean = false;
@@ -49,12 +51,11 @@ export class CreateNewCommentComponent {
       }
         this.error = true
     }, () => {
-      this.newCommentform.value.commento=null;
       this.addnewItem(this.postId);
       this.error = false
       this.buttonSaveComment = false
       this.text = false;
-
+      this.newCommentform.reset()
     })
   }
 
