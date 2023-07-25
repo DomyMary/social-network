@@ -22,6 +22,12 @@
               Error system
             </div>
           </div>
+          <div *ngIf="errRequist" class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="bi flex-shrink-0 me-2 bi-exclamation-triangle-fill"></i>
+            <div>
+              This username already exists
+            </div>
+          </div>
 
 
           <div class="col-md-4">

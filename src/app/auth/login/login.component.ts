@@ -29,6 +29,7 @@ export class LoginComponent {
     this.buttonSignin=true;
     this.state=false;
     this.err=false;
+    this.alert=false
     const body = {username: this.loginform.value.username, password: this.loginform.value.password};
       this.requestService.post('login', body).subscribe((res: any) => {
       // 1 Leggo la risposta ricevuta dal server
@@ -40,10 +41,13 @@ export class LoginComponent {
 
     }, (error) => {
       console.error(error);
-      if(error.status==503){
-        this.state=true  //Da verificare
-      }else if (this.loginform.value.username != null || this.loginform.value.password != null) {
-          this.err=true;
+        if (this.loginform.value.username != null || this.loginform.value.password != null) {
+          if(error.status>=500){
+            this.state=true
+          } else {
+            this.err=true;
+          }
+
         }
 
         this.buttonSignin=false

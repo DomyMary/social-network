@@ -12,6 +12,7 @@ export class RegisterComponent {
   buttonSignUp: boolean = false;
   registrazioneSucc: boolean = false
   err:boolean=false;
+  errRequist:boolean=false;
   registerform: FormGroup = new FormGroup({
     firstname: new FormControl(null),
     lastname: new FormControl(null),
@@ -45,7 +46,11 @@ export class RegisterComponent {
 
   register() {
     // disabilito buttonSignup
+    this.errRequist=false
+    this.err=false
+    this.alert=false
     this.buttonSignUp = true
+    this.registrazioneSucc=false;
     this.requestService.post('register', {
       username: this.registerform.value.username,
       password: this.registerform.value.password
@@ -54,7 +59,11 @@ export class RegisterComponent {
       }, (error) => {
         console.error(error);
         if (this.registerform.value.username != null || this.registerform.value.password != null) {
-          this.err=true;
+          if(error.status==400){
+              this.errRequist=true
+          }else if(error.status>=500) {
+            this.err = true;
+          }
         }
         this.alert = true;
         this.buttonSignUp = false //non disabilito
@@ -65,6 +74,7 @@ export class RegisterComponent {
         this.registrazioneSucc = true;
         this.alert = false;
         this.err=false;
+        this.errRequist=false
       }
     );
   }
