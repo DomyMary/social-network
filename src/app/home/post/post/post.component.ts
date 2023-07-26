@@ -7,7 +7,7 @@ import {RequestService} from "../../../shared/services/request.service";
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit{
+export class PostComponent implements OnInit {
   @Input() post: Post = Post.getPostObj()
   @Input() index: number = 0;
   errlike: boolean = false;
@@ -19,9 +19,9 @@ export class PostComponent implements OnInit{
   constructor(private requestService: RequestService) {
   }
 
-ngOnInit() {
+  ngOnInit() {
     this.getUsername()
-}
+  }
 
   clickLike(postId: number) {
     this.errlike = false;
@@ -57,16 +57,14 @@ ngOnInit() {
     })
   }
 
-  getUsername(){
+  getUsername() {
     const c = localStorage?.getItem("friends")
     let friends = JSON.parse(c || '{}')
-    for (let i=0;i<friends.length;i++){
+    for (let i = 0; i < friends.length; i++) {
       if (friends[i].id == this.post.user_id) {
         this.username = friends[i].username
       }
     }
-
-
   }
 }
 
