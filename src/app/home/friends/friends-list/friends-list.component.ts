@@ -32,8 +32,10 @@ export class FriendsListComponent implements OnInit {
   getFriends() {
     this.loading = true
     return this.requestService.get("users").subscribe((res: any) => {
+
       console.log(res);
       this.friends = res;
+
     }, (error) => {
       console.error(error);
       this.loading = error;
@@ -51,11 +53,13 @@ export class FriendsListComponent implements OnInit {
   }
 
   salvaIdUserAttuale() {
+    localStorage?.setItem("friends", JSON?.stringify(this.friends))
     for (let i = 0; i < this.friends.length; i++) {
       if (this.friends[i].username == localStorage.getItem("username")) {
         localStorage.setItem("id", String(this.friends[i].id));
         this.friends.splice(i, 1);
       }
+
     }
   }
 
