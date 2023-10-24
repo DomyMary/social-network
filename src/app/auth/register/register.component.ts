@@ -59,8 +59,8 @@ export class RegisterComponent {
       }, (error) => {
         console.error(error);
         if (this.registerform.value.username != null || this.registerform.value.password != null) {
-          if(error.status==400){
-              this.errRequist=true
+          if(error.status >= 400 && error.status < 500){
+            this.errRequist=true
           }else if(error.status>=500) {
             this.err = true;
           }
